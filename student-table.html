@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Age Analysis Table</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .table-container {
+            overflow-x: auto;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px 15px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        tr:hover td {
+            background-color: #f8f9ff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:nth-child(even):hover td {
+            background-color: #f0f0ff;
+        }
+
+        .serial-no {
+            font-weight: bold;
+            color: #667eea;
+            background: linear-gradient(135deg, #f0f0ff, #e8e8ff);
+        }
+
+        .name {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .age {
+            font-weight: bold;
+            color: #764ba2;
+        }
+
+        .age-category {
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .more-than-15 {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .less-than-15 {
+            background: linear-gradient(135deg, #4ecdc4, #44a08d);
+            color: white;
+            box-shadow: 0 4px 15px rgba(78, 205, 196, 0.3);
+        }
+
+        .stats {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            th, td {
+                padding: 10px 8px;
+                font-size: 0.9rem;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Age Analysis</h1>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Serial No.</th>
+                        <th>Student Name</th>
+                        <th>Age</th>
+                        <th>Age Category</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="serial-no">1</td>
+                        <td class="name">Alex Johnson</td>
+                        <td class="age">12</td>
+                        <td class="age-category less-than-15">Less than 15</td>
+                    </tr>
+                    <tr>
+                        <td class="serial-no">2</td>
+                        <td class="name">Sarah Williams</td>
+                        <td class="age">18</td>
+                        <td class="age-category more-than-15">More than 15</td>
+                    </tr>
+                    <tr>
+                        <td class="serial-no">3</td>
+                        <td class="name">Michael Brown</td>
+                        <td class="age">14</td>
+                        <td class="age-category less-than-15">Less than 15</td>
+                    </tr>
+                    <tr>
+                        <td class="serial-no">4</td>
+                        <td class="name">Emily Davis</td>
+                        <td class="age">19</td>
+                        <td class="age-category more-than-15">More than 15</td>
+                    </tr>
+                    <tr>
+                        <td class="serial-no">5</td>
+                        <td class="name">James Wilson</td>
+                        <td class="age">11</td>
+                        <td class="age-category less-than-15">Less than 15</td>
+                    </tr>
+                    <tr>
+                        <td class="serial-no">6</td>
+                        <td class="name">Olivia Miller</td>
+                        <td class="age">16</td>
+                        <td class="age-category more-than-15">More than 15</td>
+                    </tr>
+                    <tr>
+                        <td class="serial-no">7</td>
+                        <td class="name">William Taylor</td>
+                        <td class="age">13</td>
+                        <td class="age-category less-than-15">Less than 15</td>
+                    </tr>
+                    <tr>
+                        <td class="serial-no">8</td>
+                        <td class="name">Ava Anderson</td>
+                        <td class="age">20</td>
+                        <td class="age-category more-than-15">More than 15</td>
+                    </tr>
+                    <tr>
+                        <td class="serial-no">9</td>
+                        <td class="name">Benjamin Thomas</td>
+                        <td class="age">10</td>
+                        <td class="age-category less-than-15">Less than 15</td>
+                    </tr>
+                    <tr>
+                        <td class="serial-no">10</td>
+                        <td class="name">Sophia Jackson</td>
+                        <td class="age">17</td>
+                        <td class="age-category more-than-15">More than 15</td>
+                    </tr>
+                    <tr>
+                        <td class="serial-no">11</td>
+                        <td class="name">Lucas White</td>
+                        <td class="age">15</td>
+                        <td class="age-category less-than-15">Less than 15</td>
+                    </tr>
+                    <tr>
+                        <td class="serial-no">12</td>
+                        <td class="name">Isabella Harris</td>
+                        <td class="age">18</td>
+                        <td class="age-category more-than-15">More than 15</td>
+                    </tr>
+                    <tr>
+                        <td class="serial-no">13</td>
+                        <td class="name">Henry Martin</td>
+                        <td class="age">12</td>
+                        <td class="age-category less-than-15">Less than 15</td>
+                    </tr>
+                    <tr>
+                        <td class="serial-no">14</td>
+                        <td class="name">Charlotte Thompson</td>
+                        <td class="age">19</td>
+                        <td class="age-category more-than-15">More than 15</td>
+                    </tr>
+                    <tr>
+                        <td class="serial-no">15</td>
+                        <td class="name">Alexander Garcia</td>
+                        <td class="age">14</td>
+                        <td class="age-category less-than-15">Less than 15</td>
+                    </tr>
+                    <tr>
+                        <td class="serial-no">16</td>
+                        <td class="name">Amelia Martinez</td>
+                        <td class="age">16</td>
+                        <td class="age-category more-than-15">More than 15</td>
+                    </tr>
+                    <tr>
+                        <td class="serial-no">17</td>
+                        <td class="name">Mason Robinson</td>
+                        <td class="age">11</td>
+                        <td class="age-category less-than-15">Less than 15</td>
+                    </tr>
+                    <tr>
+                        <td class="serial-no">18</td>
+                        <td class="name">Harper Clark</td>
+                        <td class="age">17</td>
+                        <td class="age-category more-than-15">More than 15</td>
+                    </tr>
+                    <tr>
+                        <td class="serial-no">19</td>
+                        <td class="name">Ethan Rodriguez</td>
+                        <td class="age">13</td>
+                        <td class="age-category less-than-15">Less than 15</td>
+                    </tr>
+                    <tr>
+                        <td class="serial-no">20</td>
+                        <td class="name">Mia Lewis</td>
+                        <td class="age">20</td>
+                        <td class="age-category more-than-15">More than 15</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number">20</div>
+                <div class="stat-label">Total Students</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">10</div>
+                <div class="stat-label">Students 15+ Years</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">10</div>
+                <div class="stat-label">Students Under 15</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">15</div>
+                <div class="stat-label">Average Age</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
