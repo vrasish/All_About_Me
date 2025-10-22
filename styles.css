@@ -1416,23 +1416,159 @@ section {
     font-weight: 400;
 }
 
+/* Mobile Navigation */
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+}
+
+.mobile-menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: white;
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+.mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .nav-menu {
-        flex-direction: column;
-        gap: 1.5rem;
+        gap: 2rem;
+    }
+    
+    .nav-link {
+        font-size: 1rem;
+        padding: 6px 12px;
     }
     
     .hero-title {
-        font-size: 3rem;
+        font-size: 3.5rem;
     }
     
     .hero-name {
-        font-size: 2rem;
+        font-size: 2.2rem;
+    }
+    
+    .section-title {
+        font-size: 2.8rem;
+    }
+    
+    .hobbies-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+    }
+    
+    .music-gallery {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+    
+    .video-gallery {
+        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        display: flex;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: 80px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background: rgba(0, 0, 0, 0.95);
+        backdrop-filter: blur(25px);
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 2rem;
+        transition: left 0.3s ease;
+        z-index: 1000;
+    }
+    
+    .nav-menu.active {
+        left: 0;
+    }
+    
+    .nav-link {
+        font-size: 1.2rem;
+        padding: 15px 25px;
+        margin: 10px 0;
+        border-radius: 25px;
+        background: rgba(255, 255, 255, 0.1);
+        width: 80%;
+        text-align: center;
+    }
+    
+    .nav-container {
+        justify-content: space-between;
+        padding: 0 20px;
+    }
+    
+    .hero {
+        padding: 120px 0 80px;
+        min-height: 100vh;
+    }
+    
+    .hero-title {
+        font-size: 2.8rem;
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
+    }
+    
+    .hero-name {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
     }
     
     .hero-subtitle {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .hero-description {
+        font-size: 1.1rem;
+        margin-bottom: 2.5rem;
+        padding: 0 10px;
+    }
+    
+    .cta-button {
+        padding: 15px 35px;
+        font-size: 1.1rem;
+    }
+    
+    .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 4rem;
+    }
+    
+    .section-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 3rem;
+    }
+    
+    section {
+        padding: 80px 0;
     }
     
     .about-content {
@@ -1440,56 +1576,411 @@ section {
         gap: 3rem;
     }
     
+    .about-text p {
+        font-size: 1.1rem;
+        text-align: left;
+    }
+    
     .about-stats {
         flex-direction: row;
         justify-content: space-around;
+        flex-wrap: wrap;
+        gap: 1.5rem;
     }
     
     .stat {
-        padding: 2rem;
+        padding: 1.5rem;
+        min-width: 120px;
+        flex: 1;
     }
     
     .stat h3 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+    }
+    
+    .stat p {
+        font-size: 1rem;
+    }
+    
+    .hobbies-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .hobby-card {
+        padding: 2rem;
+    }
+    
+    .hobby-card h3 {
+        font-size: 1.6rem;
+    }
+    
+    .hobby-card p {
+        font-size: 1rem;
     }
     
     .achievement-item {
         flex-direction: column;
         text-align: center;
+        padding: 2rem;
+        gap: 2rem;
     }
     
-    .video-gallery {
-        grid-template-columns: 1fr;
+    .achievement-icon {
+        font-size: 3rem;
     }
     
-    .dreams-content {
-        grid-template-columns: 1fr;
+    .achievement-content h3 {
+        font-size: 1.6rem;
+    }
+    
+    .achievement-content p {
+        font-size: 1rem;
     }
     
     .music-gallery {
         grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .music-item {
+        padding: 2rem;
+    }
+    
+    .music-item h3 {
+        font-size: 1.4rem;
+    }
+    
+    .video-gallery {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .video-item {
+        padding: 2rem;
+    }
+    
+    .video-item h3 {
+        font-size: 1.4rem;
+    }
+    
+    .video-container {
+        padding-bottom: 56.25%;
+        border-radius: 15px;
+    }
+    
+    .books-grid {
+        gap: 2rem;
+    }
+    
+    .book-series {
+        padding: 1.5rem;
+    }
+    
+    .series-title {
+        font-size: 1.6rem;
+    }
+    
+    .books-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .book-item {
+        padding: 1.2rem;
+    }
+    
+    .book-info h4 {
+        font-size: 1.2rem;
+    }
+    
+    .dreams-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .dream-item {
+        padding: 2rem;
+    }
+    
+    .dream-item h3 {
+        font-size: 1.4rem;
+    }
+    
+    .dream-item p {
+        font-size: 1rem;
+    }
+    
+    .footer {
+        padding: 3rem 0;
+    }
+    
+    .footer p {
+        font-size: 1rem;
     }
 }
 
 @media (max-width: 480px) {
+    .nav-container {
+        padding: 0 15px;
+    }
+    
+    .hero {
+        padding: 100px 0 60px;
+    }
+    
+    .hero-title {
+        font-size: 2.2rem;
+        line-height: 1.1;
+        margin-bottom: 1rem;
+    }
+    
+    .hero-name {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+        padding: 0 5px;
+    }
+    
+    .cta-button {
+        padding: 12px 30px;
+        font-size: 1rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 3rem;
+    }
+    
+    .section-subtitle {
+        font-size: 1rem;
+        margin-bottom: 2.5rem;
+    }
+    
+    section {
+        padding: 60px 0;
+    }
+    
+    .about-stats {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .stat {
+        padding: 1.2rem;
+        min-width: auto;
+    }
+    
+    .stat h3 {
+        font-size: 2rem;
+    }
+    
+    .stat p {
+        font-size: 0.9rem;
+    }
+    
+    .hobby-card {
+        padding: 1.5rem;
+    }
+    
+    .hobby-card h3 {
+        font-size: 1.4rem;
+    }
+    
+    .hobby-card p {
+        font-size: 0.95rem;
+    }
+    
+    .achievement-item {
+        padding: 1.5rem;
+    }
+    
+    .achievement-icon {
+        font-size: 2.5rem;
+    }
+    
+    .achievement-content h3 {
+        font-size: 1.4rem;
+    }
+    
+    .achievement-content p {
+        font-size: 0.95rem;
+    }
+    
+    .music-item {
+        padding: 1.5rem;
+    }
+    
+    .music-item h3 {
+        font-size: 1.3rem;
+    }
+    
+    .music-item p {
+        font-size: 0.95rem;
+    }
+    
+    .video-item {
+        padding: 1.5rem;
+    }
+    
+    .video-item h3 {
+        font-size: 1.3rem;
+    }
+    
+    .book-series {
+        padding: 1.2rem;
+    }
+    
+    .series-title {
+        font-size: 1.4rem;
+    }
+    
+    .book-item {
+        padding: 1rem;
+    }
+    
+    .book-info h4 {
+        font-size: 1.1rem;
+    }
+    
+    .book-review {
+        font-size: 0.9rem;
+    }
+    
+    .dream-item {
+        padding: 1.5rem;
+    }
+    
+    .dream-item h3 {
+        font-size: 1.3rem;
+    }
+    
+    .dream-item p {
+        font-size: 0.95rem;
+    }
+    
+    .footer {
+        padding: 2rem 0;
+    }
+    
+    .footer p {
+        font-size: 0.9rem;
+    }
+}
+
+/* Extra small devices (phones in portrait) */
+@media (max-width: 360px) {
+    .hero-title {
+        font-size: 1.8rem;
+    }
+    
+    .hero-name {
+        font-size: 1.3rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .nav-link {
+        font-size: 1rem;
+        padding: 12px 20px;
+    }
+    
+    .stat h3 {
+        font-size: 1.8rem;
+    }
+    
+    .hobby-card, .achievement-item, .music-item, .video-item, .dream-item {
+        padding: 1.2rem;
+    }
+}
+
+/* Landscape orientation for mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero {
+        padding: 80px 0 60px;
+        min-height: auto;
+    }
+    
     .hero-title {
         font-size: 2.5rem;
+    }
+    
+    .hero-name {
+        font-size: 1.6rem;
     }
     
     .section-title {
         font-size: 2.2rem;
     }
     
-    .about-stats {
+    section {
+        padding: 60px 0;
+    }
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 768px) {
+    /* Improve touch targets */
+    .nav-link, .cta-button, .toggle-details-btn, .toggle-review-btn, .amazon-link {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* Better spacing for mobile */
+    .container {
+        padding: 0 15px;
+    }
+    
+    /* Improve text readability */
+    body {
+        font-size: 16px;
+        line-height: 1.6;
+    }
+    
+    /* Better button spacing */
+    .book-actions {
         flex-direction: column;
+        gap: 0.8rem;
+        align-items: stretch;
     }
     
-    .hobbies-grid {
-        grid-template-columns: 1fr;
+    .book-actions .amazon-link,
+    .book-actions .toggle-review-btn {
+        width: 100%;
+        text-align: center;
     }
     
-    .music-gallery {
-        grid-template-columns: 1fr;
+    /* Improve video responsiveness */
+    .video-container iframe {
+        border-radius: 15px;
+    }
+    
+    /* Better achievement layout */
+    .achievement-item {
+        margin-bottom: 1.5rem;
+    }
+    
+    /* Improve floating elements visibility on mobile */
+    .floating-shape {
+        opacity: 0.6;
+    }
+    
+    /* Better hero content spacing */
+    .hero-content {
+        padding: 0 10px;
     }
 }
 
