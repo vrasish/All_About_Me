@@ -67,8 +67,8 @@ body::after {
     top: 0;
     width: 100%;
     z-index: 1000;
-    box-shadow: 0 8px 32px rgba(255, 0, 0, 0.2);
-    border-bottom: 1px solid rgba(255, 0, 0, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
 }
 
@@ -1421,29 +1421,37 @@ section {
     display: none;
     flex-direction: column;
     cursor: pointer;
-    padding: 10px;
+    padding: 8px;
     z-index: 1001;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.mobile-menu-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .mobile-menu-toggle span {
-    width: 25px;
-    height: 3px;
+    width: 24px;
+    height: 2px;
     background: white;
-    margin: 3px 0;
-    transition: 0.3s;
-    border-radius: 2px;
+    margin: 2px 0;
+    transition: all 0.3s ease;
+    border-radius: 1px;
+    display: block;
 }
 
 .mobile-menu-toggle.active span:nth-child(1) {
-    transform: rotate(-45deg) translate(-5px, 6px);
+    transform: rotate(45deg) translate(5px, 5px);
 }
 
 .mobile-menu-toggle.active span:nth-child(2) {
     opacity: 0;
+    transform: scale(0);
 }
 
 .mobile-menu-toggle.active span:nth-child(3) {
-    transform: rotate(45deg) translate(-5px, -6px);
+    transform: rotate(-45deg) translate(7px, -6px);
 }
 
 /* Responsive Design */
@@ -1493,32 +1501,53 @@ section {
     .nav-menu {
         position: fixed;
         top: 80px;
-        left: -100%;
+        left: 0;
         width: 100%;
-        height: calc(100vh - 80px);
+        max-height: 0;
         background: rgba(0, 0, 0, 0.95);
         backdrop-filter: blur(25px);
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
-        padding-top: 2rem;
-        transition: left 0.3s ease;
+        padding: 0;
+        transition: max-height 0.4s ease, padding 0.4s ease;
         z-index: 1000;
+        overflow: hidden;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
     
     .nav-menu.active {
-        left: 0;
+        max-height: 450px;
+        padding: 2rem 0 1.5rem;
     }
     
     .nav-link {
-        font-size: 1.2rem;
-        padding: 15px 25px;
-        margin: 10px 0;
-        border-radius: 25px;
+        font-size: 1.1rem;
+        padding: 12px 20px;
+        margin: 5px 0;
+        border-radius: 20px;
         background: rgba(255, 255, 255, 0.1);
-        width: 80%;
+        width: 90%;
+        max-width: 280px;
         text-align: center;
+        transition: all 0.3s ease;
+        opacity: 0;
+        transform: translateY(-10px);
     }
+    
+    .nav-menu.active .nav-link {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .nav-menu.active .nav-link:nth-child(1) { transition-delay: 0.1s; }
+    .nav-menu.active .nav-link:nth-child(2) { transition-delay: 0.15s; }
+    .nav-menu.active .nav-link:nth-child(3) { transition-delay: 0.2s; }
+    .nav-menu.active .nav-link:nth-child(4) { transition-delay: 0.25s; }
+    .nav-menu.active .nav-link:nth-child(5) { transition-delay: 0.3s; }
+    .nav-menu.active .nav-link:nth-child(6) { transition-delay: 0.35s; }
+    .nav-menu.active .nav-link:nth-child(7) { transition-delay: 0.4s; }
     
     .nav-container {
         justify-content: space-between;
@@ -2169,20 +2198,26 @@ section {
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 2rem 0;
-        gap: 0.5rem;
+        padding: 1.5rem 0;
+        gap: 0.3rem;
     }
     
     .nav-link {
-        width: 90%;
-        max-width: 300px;
-        padding: 15px 20px;
-        margin: 5px 0;
-        border-radius: 25px;
+        width: 85%;
+        max-width: 260px;
+        padding: 12px 18px;
+        margin: 3px 0;
+        border-radius: 20px;
         background: rgba(255, 255, 255, 0.1);
         text-align: center;
-        font-size: 1.1rem;
+        font-size: 1rem;
         font-weight: 500;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-link:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-1px);
     }
 }
 
